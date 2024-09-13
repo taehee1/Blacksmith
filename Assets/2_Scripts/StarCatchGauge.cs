@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ public class StarCatchGauge : MonoBehaviour
 
     [Header("시간제한")]
     public float timeLimit = 5f;  // 스타캐치 시간 제한
-    public Text timerText;  // 시간 제한을 표시할 UI 텍스트
+    public TextMeshProUGUI timerText;  // 시간 제한을 표시할 UI 텍스트
 
     private float successRangeMin;
     private float successRangeMax;
@@ -33,6 +34,7 @@ public class StarCatchGauge : MonoBehaviour
 
     void Start()
     {
+        ResetTimer();  // 타이머 초기화
         SetRandomSuccessRange();  // 시작 시 랜덤 성공 범위 설정
     }
 
@@ -42,6 +44,10 @@ public class StarCatchGauge : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            ResetTimer();  // 타이머 초기화
+
+            SetRandomSuccessRange();
+
             gauge.SetActive(true);
 
             Vector2 currentPosition = gaugeImageRect.anchoredPosition;
@@ -73,17 +79,12 @@ public class StarCatchGauge : MonoBehaviour
                 // 실패 피드백
             }
 
-            // 성공/실패 후 새로운 랜덤 범위 설정
-            SetRandomSuccessRange();
-
             gauge.SetActive(false);
         }
 
         if (currentTime <= 0)
         {
             Debug.Log("Time's up! Fail...");
-            ResetTimer();  // 타이머 초기화
-            SetRandomSuccessRange();  // 새로운 성공 범위 설정
         }
     }
 
@@ -152,7 +153,7 @@ public class StarCatchGauge : MonoBehaviour
     void UpdateTimer()
     {
         currentTime -= Time.deltaTime;
-        timerText.text = currentTime.ToString("F2");  // 소수점 두 자리까지 표시
+        timerText.text = currentTime.ToString("F0");  // 소수점 두 자리까지 표시
 
         if (currentTime < 0)
         {
