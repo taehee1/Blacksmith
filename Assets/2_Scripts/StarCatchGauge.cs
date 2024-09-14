@@ -27,20 +27,22 @@ public class StarCatchGauge : MonoBehaviour
     public float timeLimit = 5f;  // 스타캐치 시간 제한
     public TextMeshProUGUI timerText;  // 시간 제한을 표시할 UI 텍스트
 
+    [Header("참조")]
+    public EnforceManager enforceManager;
+
     private float successRangeMin;
     private float successRangeMax;
     private bool isMovingRight = true;  // 이미지가 오른쪽으로 이동 중인지 여부
     private float currentTime;  // 남은 시간
+    private bool isTimeUp = true;
 
     void Start()
     {
-        ResetTimer();  // 타이머 초기화
         SetRandomSuccessRange();  // 시작 시 랜덤 성공 범위 설정
     }
 
     void Update()
     {
-        UpdateTimer();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -51,11 +53,19 @@ public class StarCatchGauge : MonoBehaviour
             gauge.SetActive(true);
 
             Vector2 currentPosition = gaugeImageRect.anchoredPosition;
-            
+
             currentPosition.x = minX;
 
             gaugeImageRect.anchoredPosition = currentPosition;
         }
+
+        if (isTimeUp)
+        {
+            //gauge.SetActive(false);
+            return;
+        }
+
+        UpdateTimer();
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -71,20 +81,28 @@ public class StarCatchGauge : MonoBehaviour
             if (currentX >= successRangeMin && currentX <= successRangeMax)
             {
                 Debug.Log("Success!");
+                enforceManager.Enforce(true);
                 // 성공 피드백
             }
             else
             {
                 Debug.Log("Fail...");
+                enforceManager.Enforce(false);
                 // 실패 피드백
             }
 
             gauge.SetActive(false);
+            isTimeUp = true;  // 타이머 종료 상태로 변경
         }
 
         if (currentTime <= 0)
         {
-            Debug.Log("Time's up! Fail...");
+            if (!isTimeUp)  // 타이머가 종료된 상태가 아니면 처리
+            {
+                Debug.Log("Time's up! Fail...");
+                enforceManager.Enforce(false);
+                isTimeUp = true;  // 타이머 종료 상태로 변경
+            }
         }
     }
 
@@ -165,5 +183,6 @@ public class StarCatchGauge : MonoBehaviour
     void ResetTimer()
     {
         currentTime = timeLimit;  // 시간 제한을 초기화
+        isTimeUp = false;
     }
 }

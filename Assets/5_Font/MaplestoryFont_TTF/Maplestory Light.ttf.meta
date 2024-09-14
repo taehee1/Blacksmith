@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72f24a81fc139a447bba926b4a250381
+guid: 0b2d81ac90796364686bfb991385a8f3
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - SB Aggro
+  - Maplestory
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

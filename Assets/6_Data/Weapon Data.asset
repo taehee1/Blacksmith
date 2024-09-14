@@ -13,47 +13,64 @@ MonoBehaviour:
   m_Name: Weapon Data
   m_EditorClassIdentifier: 
   weaponInfo:
-  - name: 
-    image: {fileID: 0}
+  - chance: 100
+    name: "\uB098\uBB34\uAC80"
+    image: {fileID: 441336251, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 95
+    name: "\uADF8\uB0E5\uAC80"
+    image: {fileID: -1703936037, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 95
+    name: "\uD55C\uC190\uAC80"
+    image: {fileID: -1457207743, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 90
+    name: "\uC138\uC774\uBC84"
+    image: {fileID: 594967325, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 90
+    name: "\uB300\uAC80"
+    image: {fileID: 1228945356, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 85
+    name: "\uBE75\uCE7C"
+    image: {fileID: 1438899231, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 85
+    name: "\uB9E5\uAC00\uC774\uBC84\uCE7C"
+    image: {fileID: -721741568, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 80
+    name: "\uC2ED\uC790\uAC80"
+    image: {fileID: -634407154, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 75
+    name: "\uAE08\uAC80"
+    image: {fileID: -1596383292, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 0
-    chance: 0
-  - name: 
-    image: {fileID: 0}
+  - chance: 70
+    name: "\uBA85\uACB8"
+    image: {fileID: 462149968, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
     damage: 0
-    chance: 0
+  - chance: 60
+    name: "\uD22C\uBA85\uAC80"
+    image: {fileID: 21300000, guid: c2839094e301c94448644868f77c7869, type: 3}
+    damage: 0
+  - chance: 50
+    name: "\uB4C0\uB77C\uD55C"
+    image: {fileID: -1424885084, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
+    damage: 0
+  - chance: 45
+    name: "\uD138\uAC80"
+    image: {fileID: 1021187404, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 0
+  - chance: 40
+    name: "\uC7A5\uBBF8\uCE7C"
+    image: {fileID: -383307309, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 0
   weaponIndex: 0
-  weaponName: 
-  weaponImage: {fileID: 0}
+  nextWeaponChance: 100
+  weaponName: "\uB098\uBB34\uAC80"
+  weaponImage: {fileID: 441336251, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
   weaponDamage: 0
