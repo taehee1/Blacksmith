@@ -6,7 +6,7 @@ public class WeaponManager : MonoBehaviour
 {
     public WeaponData weaponData;
 
-    private void Start()
+    private void Awake()
     {
         ChangeWeapon();
     }

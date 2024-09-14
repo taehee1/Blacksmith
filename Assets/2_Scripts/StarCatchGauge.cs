@@ -27,6 +27,10 @@ public class StarCatchGauge : MonoBehaviour
     public float timeLimit = 5f;  // 스타캐치 시간 제한
     public TextMeshProUGUI timerText;  // 시간 제한을 표시할 UI 텍스트
 
+    [Header("애니메이션")]
+    public Animation stopEffect;
+    private Animator animator;
+
     [Header("참조")]
     public EnforceManager enforceManager;
 
@@ -38,30 +42,20 @@ public class StarCatchGauge : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         SetRandomSuccessRange();  // 시작 시 랜덤 성공 범위 설정
     }
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ResetTimer();  // 타이머 초기화
-
-            SetRandomSuccessRange();
-
-            gauge.SetActive(true);
-
-            Vector2 currentPosition = gaugeImageRect.anchoredPosition;
-
-            currentPosition.x = minX;
-
-            gaugeImageRect.anchoredPosition = currentPosition;
+            KeyDown();
         }
 
         if (isTimeUp)
         {
-            //gauge.SetActive(false);
             return;
         }
 
@@ -69,30 +63,13 @@ public class StarCatchGauge : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            MoveGaugeImage();  // 게이지 이미지를 왔다 갔다 이동
+            StayKey();
         }
 
         // 스페이스바 입력 감지
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            float currentX = gaugeImageRect.anchoredPosition.x;
-
-            // 현재 위치가 성공 범위 내에 있는지 확인
-            if (currentX >= successRangeMin && currentX <= successRangeMax)
-            {
-                Debug.Log("Success!");
-                enforceManager.Enforce(true);
-                // 성공 피드백
-            }
-            else
-            {
-                Debug.Log("Fail...");
-                enforceManager.Enforce(false);
-                // 실패 피드백
-            }
-
-            gauge.SetActive(false);
-            isTimeUp = true;  // 타이머 종료 상태로 변경
+            KeyUp();
         }
 
         if (currentTime <= 0)
@@ -104,6 +81,48 @@ public class StarCatchGauge : MonoBehaviour
                 isTimeUp = true;  // 타이머 종료 상태로 변경
             }
         }
+    }
+
+    public void KeyUp()
+    {
+        float currentX = gaugeImageRect.anchoredPosition.x;
+
+        // 현재 위치가 성공 범위 내에 있는지 확인
+        if (currentX >= successRangeMin && currentX <= successRangeMax)
+        {
+            Debug.Log("Success!");
+            enforceManager.Enforce(true);
+            // 성공 피드백
+        }
+        else
+        {
+            Debug.Log("Fail...");
+            enforceManager.Enforce(false);
+            // 실패 피드백
+        }
+
+        gauge.SetActive(false);
+        isTimeUp = true;  // 타이머 종료 상태로 변경
+    }
+
+    public void StayKey()
+    {
+        MoveGaugeImage();  // 게이지 이미지를 왔다 갔다 이동
+    }
+
+    public void KeyDown()
+    {
+        ResetTimer();  // 타이머 초기화
+
+        SetRandomSuccessRange();
+
+        gauge.SetActive(true);
+
+        Vector2 currentPosition = gaugeImageRect.anchoredPosition;
+
+        currentPosition.x = minX;
+
+        gaugeImageRect.anchoredPosition = currentPosition;
     }
 
     // 게이지 이미지를 좌우로 이동시키는 함수
@@ -143,12 +162,15 @@ public class StarCatchGauge : MonoBehaviour
     void SetRandomSuccessRange()
     {
         // 성공 범위를 minX ~ maxX 범위 내에서 랜덤으로 설정
-        successRangeMin = Random.Range(minX, maxX - chanceRange);
-        successRangeMax = successRangeMin + Random.Range(chanceMin, chanceMax);  // 성공 범위 크기는 50 ~ 100 사이로 설정
+        float rangeWidth = Random.Range(chanceMin, chanceMax);  // 성공 범위의 너비를 설정
+        successRangeMin = Random.Range(minX, maxX - rangeWidth);  // 성공 범위의 최소 X값 설정
+        successRangeMax = successRangeMin + rangeWidth;  // 성공 범위의 최대 X값 설정
 
+        // successRangeMax가 maxX를 초과하지 않도록 조정
         if (successRangeMax > maxX)
         {
             successRangeMax = maxX;
+            successRangeMin = successRangeMax - rangeWidth;  // successRangeMin 재설정
         }
 
         // 성공 범위를 시각적으로 업데이트
@@ -184,5 +206,27 @@ public class StarCatchGauge : MonoBehaviour
     {
         currentTime = timeLimit;  // 시간 제한을 초기화
         isTimeUp = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Gizmo 색상 설정
+        Gizmos.color = Color.yellow;
+
+        // 성공 범위가 설정되어 있을 때만 표시
+        if (successRangeMin < successRangeMax)
+        {
+            // 성공 범위의 최소 X와 최대 X를 사용하여 범위를 그리기
+            Vector3 minPoint = new Vector3(successRangeMin, 0, 0);
+            Vector3 maxPoint = new Vector3(successRangeMax, 0, 0);
+
+            // 성공 범위의 상단과 하단 선을 그리기
+            Gizmos.DrawLine(new Vector3(minPoint.x, -1, minPoint.z), new Vector3(maxPoint.x, -1, minPoint.z)); // 하단 선
+            Gizmos.DrawLine(new Vector3(minPoint.x, 1, minPoint.z), new Vector3(maxPoint.x, 1, minPoint.z));   // 상단 선
+
+            // 성공 범위의 왼쪽과 오른쪽 선을 그리기
+            Gizmos.DrawLine(new Vector3(minPoint.x, -1, minPoint.z), new Vector3(minPoint.x, 1, minPoint.z));   // 왼쪽 선
+            Gizmos.DrawLine(new Vector3(maxPoint.x, -1, minPoint.z), new Vector3(maxPoint.x, 1, minPoint.z));   // 오른쪽 선
+        }
     }
 }
