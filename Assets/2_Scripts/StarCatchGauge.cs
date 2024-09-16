@@ -13,8 +13,8 @@ public class StarCatchGauge : MonoBehaviour
     public float speed = 300f;  // 이미지 이동 속도
 
     [Header("게이지 범위")]
-    [SerializeField] private float minX = -4.3f;  // 이미지 이동 범위의 최소 X값
-    [SerializeField] private float maxX = 4.3f;   // 이미지 이동 범위의 최대 X값
+    public float minX = -4.3f;  // 이미지 이동 범위의 최소 X값
+    public float maxX = 4.3f;   // 이미지 이동 범위의 최대 X값
 
     [Header("찬스 범위")]
     public float chanceRange = 4.3f;
@@ -25,33 +25,51 @@ public class StarCatchGauge : MonoBehaviour
 
     [Header("시간제한")]
     public float timeLimit = 5f;  // 스타캐치 시간 제한
-    public TextMeshProUGUI timerText;  // 시간 제한을 표시할 UI 텍스트
+    [SerializeField] private TextMeshProUGUI timerText;
 
     [Header("애니메이션")]
-    public Animation stopEffect;
-    private Animator animator;
+    private BlacksmithAnimation anim;
+
+    [Header("이펙트")]
+    [SerializeField] private GameObject chanceSuccess;
 
     [Header("참조")]
-    public EnforceManager enforceManager;
+    [SerializeField] private EnforceManager enforceManager;
 
     private float successRangeMin;
     private float successRangeMax;
     private bool isMovingRight = true;  // 이미지가 오른쪽으로 이동 중인지 여부
+    private bool isEnforcing = false; //강화중인지 여부
     private float currentTime;  // 남은 시간
-    private bool isTimeUp = true;
+    private bool isTimeUp = true; //시간이 초과되었는지 여부
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<BlacksmithAnimation>();
 
         SetRandomSuccessRange();  // 시작 시 랜덤 성공 범위 설정
     }
 
     void Update()
     {
+        if (isEnforcing)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            KeyDown();
+            ResetTimer();  // 타이머 초기화
+
+            SetRandomSuccessRange();
+
+            gauge.SetActive(true);
+
+            Vector2 currentPosition = gaugeImageRect.anchoredPosition;
+
+            currentPosition.x = minX;
+
+            gaugeImageRect.anchoredPosition = currentPosition;
         }
 
         if (isTimeUp)
@@ -63,27 +81,55 @@ public class StarCatchGauge : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            StayKey();
+            MoveGaugeImage();  // 게이지 이미지를 왔다 갔다 이동
         }
 
         // 스페이스바 입력 감지
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            KeyUp();
+            float currentX = gaugeImageRect.anchoredPosition.x;
+
+            if (currentX >= successRangeMin && currentX <= successRangeMax)
+            {
+                chanceSuccess.SetActive(false);
+
+                Vector2 effectPosition = chanceSuccess.GetComponent<RectTransform>().anchoredPosition;
+                effectPosition.x = currentX;
+
+                chanceSuccess.GetComponent<RectTransform>().anchoredPosition = effectPosition;
+
+                chanceSuccess.SetActive(true);
+            }
+
+            anim.EnforceAnim();
+
+            isEnforcing = true; // 강화중 상태로 변경
+            isTimeUp = true;  // 타이머 종료 상태로 변경
+
+            Invoke("HideGauge", 0.5f);
         }
 
+        // 강화 시간 초과시
         if (currentTime <= 0)
         {
-            if (!isTimeUp)  // 타이머가 종료된 상태가 아니면 처리
+            if (!isTimeUp)
             {
                 Debug.Log("Time's up! Fail...");
-                enforceManager.Enforce(false);
+                anim.EnforceAnim();
+
+                gauge.SetActive(false);
+                isEnforcing = true; // 강화중 상태로 변경
                 isTimeUp = true;  // 타이머 종료 상태로 변경
             }
         }
     }
 
-    public void KeyUp()
+    void HideGauge()
+    {
+        gauge.SetActive(false);
+    }
+
+    public void ExecuteEnforce()
     {
         float currentX = gaugeImageRect.anchoredPosition.x;
 
@@ -101,28 +147,7 @@ public class StarCatchGauge : MonoBehaviour
             // 실패 피드백
         }
 
-        gauge.SetActive(false);
-        isTimeUp = true;  // 타이머 종료 상태로 변경
-    }
-
-    public void StayKey()
-    {
-        MoveGaugeImage();  // 게이지 이미지를 왔다 갔다 이동
-    }
-
-    public void KeyDown()
-    {
-        ResetTimer();  // 타이머 초기화
-
-        SetRandomSuccessRange();
-
-        gauge.SetActive(true);
-
-        Vector2 currentPosition = gaugeImageRect.anchoredPosition;
-
-        currentPosition.x = minX;
-
-        gaugeImageRect.anchoredPosition = currentPosition;
+        isEnforcing = false; // 강화중 상태 취소
     }
 
     // 게이지 이미지를 좌우로 이동시키는 함수
