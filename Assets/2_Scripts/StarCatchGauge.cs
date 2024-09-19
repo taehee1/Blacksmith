@@ -39,9 +39,16 @@ public class StarCatchGauge : MonoBehaviour
     private float successRangeMin;
     private float successRangeMax;
     private bool isMovingRight = true;  // 이미지가 오른쪽으로 이동 중인지 여부
-    private bool isEnforcing = false; //강화중인지 여부
+    public bool isEnforcing = false; //강화중인지 여부
     private float currentTime;  // 남은 시간
     private bool isTimeUp = true; //시간이 초과되었는지 여부
+
+    public static StarCatchGauge instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -147,7 +154,7 @@ public class StarCatchGauge : MonoBehaviour
             // 실패 피드백
         }
 
-        isEnforcing = false; // 강화중 상태 취소
+        //isEnforcing = false; // 강화중 상태 취소
     }
 
     // 게이지 이미지를 좌우로 이동시키는 함수

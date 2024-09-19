@@ -1,5 +1,7 @@
+using Michsky.UI.MTP;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnforceManager : MonoBehaviour
@@ -14,6 +16,8 @@ public class EnforceManager : MonoBehaviour
     #endregion
 
     public WeaponManager weaponManager;
+    public GameObject successResult;
+    public GameObject failResult;
 
     private void Awake()
     {
@@ -33,25 +37,29 @@ public class EnforceManager : MonoBehaviour
 
         if (enforceChance < weaponManager.nextWeaponChance * starCatchChance)
         {
-            Success();
+            //Success();
+            successResult.SetActive(true);
             Debug.Log("강화성공");
         }
         else
         {
-            Fail();
+            //Fail();
+            failResult.SetActive(true);
             Debug.Log("강화실패");
         }
     }
 
-    private void Success()
+    public void Success()
     {
         weaponManager.weaponIndex++;
         weaponManager.ChangeWeapon();
+        StarCatchGauge.instance.isEnforcing = false;
     }
 
-    private void Fail()
+    public void Fail()
     {
         weaponManager.weaponIndex--;
         weaponManager.ChangeWeapon();
+        StarCatchGauge.instance.isEnforcing = false;
     }
 }
