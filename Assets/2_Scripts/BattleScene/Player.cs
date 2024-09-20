@@ -6,8 +6,10 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float jumpPower = 5f;
 
     private bool isRight = true;
+    private bool canJump = true;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
+        Jump();
     }
 
     void Move()
@@ -54,8 +57,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Attack()
+    void Jump()
     {
-         
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            canJump = false;
+            anim.SetTrigger("Jump");
+
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            canJump = true;
+        }
     }
 }
