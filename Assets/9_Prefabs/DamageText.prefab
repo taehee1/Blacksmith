@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 141765510018627722}
   - component: {fileID: 8639804537905018921}
   - component: {fileID: 4261112329484776239}
+  - component: {fileID: 4427142420694116564}
   m_Layer: 0
   m_Name: DamageText
   m_TagString: Untagged
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4177526783
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -147,3 +148,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!111 &4427142420694116564
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555805660435942683}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 44f9ab2bdca3783419bbf8c533fe9b34, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 44f9ab2bdca3783419bbf8c533fe9b34, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
