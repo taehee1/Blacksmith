@@ -15,7 +15,6 @@ public class EnforceManager : MonoBehaviour
     }
     #endregion
 
-    public WeaponManager weaponManager;
     public GameObject successResult;
     public GameObject failResult;
 
@@ -31,11 +30,11 @@ public class EnforceManager : MonoBehaviour
         if (isSuccess) starCatchChance = 1.05f;
         else starCatchChance = 1f;
 
-        Debug.Log("°­È­È®·ü:" + starCatchChance * weaponManager.nextWeaponChance);
+        Debug.Log("°­È­È®·ü:" + starCatchChance * WeaponManager.Instance.nextWeaponChance);
 
         float enforceChance = Random.Range(0f, 100f);
 
-        if (enforceChance < weaponManager.nextWeaponChance * starCatchChance)
+        if (enforceChance < WeaponManager.Instance.nextWeaponChance * starCatchChance)
         {
             //Success();
             successResult.SetActive(true);
@@ -51,15 +50,15 @@ public class EnforceManager : MonoBehaviour
 
     public void Success()
     {
-        weaponManager.weaponIndex++;
-        weaponManager.ChangeWeapon();
+        WeaponManager.Instance.weaponIndex++;
+        WeaponManager.Instance.ChangeWeapon();
         StarCatchGauge.instance.isEnforcing = false;
     }
 
     public void Fail()
     {
-        weaponManager.weaponIndex--;
-        weaponManager.ChangeWeapon();
+        WeaponManager.Instance.weaponIndex--;
+        WeaponManager.Instance.ChangeWeapon();
         StarCatchGauge.instance.isEnforcing = false;
     }
 }

@@ -5,9 +5,12 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    [Header("수치")]
     public float moveSpeed = 5f;
     public float jumpPower = 5f;
 
+    //상태
+    public bool canMove = false;
     private bool isRight = true;
     private bool canJump = true;
 
@@ -22,6 +25,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
         Move();
         Jump();
     }

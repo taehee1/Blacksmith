@@ -15,6 +15,11 @@ public class _SceneManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
+    public void Battle()
+    {
+        SceneManager.LoadScene("Battle");
+    }
+
     public void Title()
     {
         SceneManager.LoadScene("Title");

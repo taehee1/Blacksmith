@@ -9,7 +9,7 @@ public class Dummy : MonoBehaviour
     public TextMeshProUGUI dpsText; // DPS UI 텍스트
     public TextMeshProUGUI totalDamageText; // 총 피해량 UI 텍스트
 
-    private float totalDamage = 0;
+    public float totalDamage = 0;
     private float damagePerSecond = 0;
     private float damageTimer = 0;
 
@@ -22,6 +22,8 @@ public class Dummy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         totalDamage += damage; // 총 피해량 증가
+
+        GameManager.Instance.coin += damage;
 
         // 데미지 텍스트를 훈련봇의 위치 위로 생성
         damageTextManager.ShowDamage(damage);

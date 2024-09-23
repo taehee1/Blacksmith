@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public float comboDalay;
+    //참조
+    private Player player;
+
+    [Header("수치")]
+    public float comboDelay;
 
     private int currentCombo;
     private bool canNext = true;
@@ -15,18 +19,21 @@ public class PlayerCombat : MonoBehaviour
 
     private void Awake()
     {
+        player = GetComponent<Player>();
+
         anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        Attack();
 
-        comboTimer += Time.deltaTime;
-        if (comboTimer > comboDalay)
+        if (!player.canMove)
         {
-            canAttack = true;
+            return;
         }
+
+        Attack();
+        ComboDelay();
     }
 
     private void Attack()
@@ -57,6 +64,15 @@ public class PlayerCombat : MonoBehaviour
             {
                 ResetCombo();
             }
+        }
+    }
+
+    private void ComboDelay()
+    {
+        comboTimer += Time.deltaTime;
+        if (comboTimer > comboDelay)
+        {
+            canAttack = true;
         }
     }
 

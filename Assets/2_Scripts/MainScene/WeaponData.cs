@@ -17,5 +17,5 @@ public class WeaponInfo
     public float chance;
     public string name;
     public Sprite image;
-    public float damage;
+    public int damage;
 }

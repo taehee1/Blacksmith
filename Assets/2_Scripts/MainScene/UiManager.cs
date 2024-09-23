@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    //인게임 UI
+
     [Header("무기UI")]
-    public WeaponManager weaponManager;
-    [Space(10)]
     public Image image;
     public TextMeshProUGUI index;
-    public TextMeshProUGUI name;
+    public new TextMeshProUGUI name;
     public TextMeshProUGUI chance;
     public TextMeshProUGUI damage;
+
+    [Header("재화UI")]
+    public TextMeshProUGUI coin;
 
     [Header("메뉴UI")]
     public GameObject menuUI;
@@ -28,15 +32,30 @@ public class UiManager : MonoBehaviour
     private void Update()
     {
         WeaponUIUpdate();
+        CoinUIUpdate();
+        MenuOpen();
     }
 
-    public void WeaponUIUpdate()
+    private void WeaponUIUpdate()
     {
-        image.sprite = weaponManager.weaponImage;
-        index.text = $"{weaponManager.weaponIndex} 강";
-        name.text = $"{weaponManager.weaponName}";
-        chance.text = $"성공확률 : {weaponManager.nextWeaponChance}%";
-        damage.text = $"데미지 : {weaponManager.weaponDamage}";
+        image.sprite = WeaponManager.Instance.weaponImage;
+        index.text = $"{WeaponManager.Instance.weaponIndex} 강";
+        name.text = $"{WeaponManager.Instance.weaponName}";
+        chance.text = $"성공확률 : {WeaponManager.Instance.nextWeaponChance}%";
+        damage.text = $"데미지 : {WeaponManager.Instance.weaponDamage}";
+    }
+
+    private void CoinUIUpdate()
+    {
+        coin.text = GameManager.Instance.coin.ToString("N0");
+    }
+
+    private void MenuOpen()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuUI();
+        }
     }
 
     public void MenuUI()
@@ -50,6 +69,7 @@ public class UiManager : MonoBehaviour
         {
             menuUI.SetActive(!isMenuOpen);
             isMenuOpen = true;
+            EventSystem.current.SetSelectedGameObject(null); // 버튼 비활성화
         }
     }
 
@@ -64,6 +84,7 @@ public class UiManager : MonoBehaviour
         {
             settingUI.SetActive(!isSettingOpen);
             isSettingOpen = true;
+            EventSystem.current.SetSelectedGameObject(null); // 버튼 비활성화
         }
     }
 }
