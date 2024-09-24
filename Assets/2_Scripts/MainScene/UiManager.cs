@@ -21,13 +21,15 @@ public class UiManager : MonoBehaviour
 
     [Header("메뉴UI")]
     public GameObject menuUI;
-
     private bool isMenuOpen;
 
     [Header("설정UI")]
     public GameObject settingUI;
-
     private bool isSettingOpen;
+
+    [Header("상점UI")]
+    public GameObject storeUI;
+    private bool isStoreOpen;
 
     private void Update()
     {
@@ -84,6 +86,21 @@ public class UiManager : MonoBehaviour
         {
             settingUI.SetActive(!isSettingOpen);
             isSettingOpen = true;
+            EventSystem.current.SetSelectedGameObject(null); // 버튼 비활성화
+        }
+    }
+
+    public void StoreUI()
+    {
+        if (isStoreOpen)
+        {
+            storeUI.SetActive(!isStoreOpen);
+            isStoreOpen = false;
+        }
+        else
+        {
+            storeUI.SetActive(!isStoreOpen);
+            isStoreOpen = true;
             EventSystem.current.SetSelectedGameObject(null); // 버튼 비활성화
         }
     }
