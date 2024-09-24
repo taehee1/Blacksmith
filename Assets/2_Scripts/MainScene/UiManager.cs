@@ -18,6 +18,7 @@ public class UiManager : MonoBehaviour
 
     [Header("재화UI")]
     public TextMeshProUGUI coin;
+    
 
     [Header("메뉴UI")]
     public GameObject menuUI;

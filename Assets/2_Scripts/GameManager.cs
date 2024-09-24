@@ -25,4 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("점수")]
     public float bestDamage;
+
+    [Header("아이템")]
+    public int safeguardCount;
 }
