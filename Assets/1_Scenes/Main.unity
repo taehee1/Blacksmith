@@ -4185,7 +4185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b1a34baa08f6541821b41e1327d3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyEffect: {fileID: 0}
   itemInfo:
   - buyBtn: {fileID: 703647768}
     id: 1
@@ -4642,7 +4641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1161306167
 RectTransform:
   m_ObjectHideFlags: 0

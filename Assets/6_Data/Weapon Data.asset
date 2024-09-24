@@ -69,3 +69,51 @@ MonoBehaviour:
     name: "\uC7A5\uBBF8\uCE7C"
     image: {fileID: -383307309, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
     damage: 250
+  - chance: 40
+    name: "\uB2EC\uAC80"
+    image: {fileID: 801252305, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 300
+  - chance: 35
+    name: "\uC804\uAE30\uD1B1\uCC98\uB7FC\uC0DD\uAE34\uAC80"
+    image: {fileID: 1219950181, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
+    damage: 350
+  - chance: 35
+    name: "\uCCAD\uC0C8\uCE58\uAC80"
+    image: {fileID: 1997722490, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
+    damage: 400
+  - chance: 30
+    name: "\uBB3C\uB85C \uCE7C\uBCA0\uAE30"
+    image: {fileID: 1919132089, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
+    damage: 450
+  - chance: 30
+    name: "\uD478\uBC14\uC624\uC800\uB141\uBC25"
+    image: {fileID: 1352965872, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 500
+  - chance: 25
+    name: "\uAC80\uAC19\uC774\uC0DD\uAE34\uAC80"
+    image: {fileID: 121092295, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
+    damage: 600
+  - chance: 25
+    name: "\uD2B8\uB77C\uC544\uC774\uB098"
+    image: {fileID: 2100813331, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
+    damage: 700
+  - chance: 20
+    name: "\uD2B8\uB77C\uC5B4\uB978\uB098"
+    image: {fileID: 468943968, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
+    damage: 800
+  - chance: 20
+    name: "\uC544\uBE60\uBA74\uB3C4\uCE7C"
+    image: {fileID: -1852668813, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
+    damage: 800
+  - chance: 10
+    name: "\uC974\uB780"
+    image: {fileID: -1342212858, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 900
+  - chance: 5
+    name: "\uBC14\uC54C\uC81C\uBD91"
+    image: {fileID: 1915206027, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
+    damage: 1000
+  - chance: 0
+    name: "\uC5D0\uC774\uC2A4"
+    image: {fileID: -30649348, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 1500
