@@ -45,7 +45,7 @@ public class UiManager : MonoBehaviour
         index.text = $"{WeaponManager.Instance.weaponIndex} 강";
         name.text = $"{WeaponManager.Instance.weaponName}";
         chance.text = $"성공확률 : {WeaponManager.Instance.nextWeaponChance}%";
-        damage.text = $"데미지 : {WeaponManager.Instance.weaponDamage}";
+        damage.text = $"데미지 : {WeaponManager.Instance.weaponDamage - WeaponManager.Instance.plusDamage} (+{WeaponManager.Instance.plusDamage})";
     }
 
     private void UIUpdate()

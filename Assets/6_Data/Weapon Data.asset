@@ -29,27 +29,27 @@ MonoBehaviour:
     name: "\uC138\uC774\uBC84"
     image: {fileID: 594967325, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 30
-  - chance: 90
+  - chance: 85
     name: "\uB300\uAC80"
     image: {fileID: 1228945356, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 45
-  - chance: 85
+  - chance: 80
     name: "\uBE75\uCE7C"
     image: {fileID: 1438899231, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 60
-  - chance: 85
+  - chance: 75
     name: "\uB9E5\uAC00\uC774\uBC84\uCE7C"
     image: {fileID: -721741568, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
     damage: 75
-  - chance: 80
+  - chance: 70
     name: "\uC2ED\uC790\uAC80"
     image: {fileID: -634407154, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
     damage: 90
-  - chance: 75
+  - chance: 70
     name: "\uAE08\uAC80"
     image: {fileID: -1596383292, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 100
-  - chance: 70
+  - chance: 65
     name: "\uBA85\uACB8"
     image: {fileID: 462149968, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
     damage: 130
@@ -105,31 +105,39 @@ MonoBehaviour:
     name: "\uC544\uBE60\uBA74\uB3C4\uCE7C"
     image: {fileID: -1852668813, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 800
-  - chance: 10
+  - chance: 15
     name: "\uC974\uB780"
     image: {fileID: -1342212858, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
     damage: 1000
-  - chance: 5
+  - chance: 10
     name: "\uBC14\uC54C\uC81C\uBD91"
     image: {fileID: 1915206027, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
     damage: 1200
-  - chance: 4
+  - chance: 5
     name: "\uC5D0\uC774\uC2A4"
     image: {fileID: -30649348, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
     damage: 1500
-  - chance: 3
-    name: "\uC5D0\uC774\uC2A4-1"
-    image: {fileID: -1986274286, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
+  - chance: 5
+    name: "\uCC9C\uBCF8\uC575"
+    image: {fileID: -191665421, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 3000
-  - chance: 2
-    name: "\uC5D0\uC774\uC2A4-2"
-    image: {fileID: -2063328132, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+  - chance: 4
+    name: "\uB9CC\uAC1C"
+    image: {fileID: -960554284, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
     damage: 5000
+  - chance: 3
+    name: "\uC194"
+    image: {fileID: 49013878, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 10000
+  - chance: 2
+    name: "\uC81C\uC6B0\uC2A4"
+    image: {fileID: -2063328132, guid: 1aac18d185f0eaa4f8a778c9581af96e, type: 3}
+    damage: 15000
   - chance: 1
-    name: "\uC5D0\uC774\uC2A4-3"
-    image: {fileID: 2112158118, guid: b95bdba4aa1674445a4b7dfd77f4686a, type: 3}
-    damage: 8000
+    name: "\uC194&\uB8E8\uB098"
+    image: {fileID: 1284564795, guid: 3b9e0f8b1876c1c4b96b8289c5476aa4, type: 3}
+    damage: 33333
   - chance: 0
-    name: "\uC5D0\uC774\uC2A4-4"
+    name: "\uCF54\uC2A4\uBAA8\uC2A4"
     image: {fileID: 97490754, guid: 9a9d33259dd223b45a6985296c75c82d, type: 3}
-    damage: 696969
+    damage: 0

@@ -33,11 +33,14 @@ public class WeaponManager : MonoBehaviour
     public Sprite weaponImage;
     public int weaponDamage;
 
+    [Header("추가능력치")]
+    public int plusDamage;
+
     public void ChangeWeapon()
     {
         nextWeaponChance = weaponData.weaponInfo[weaponIndex].chance;
         weaponName = weaponData.weaponInfo[weaponIndex].name;
         weaponImage = weaponData.weaponInfo[weaponIndex].image;
-        weaponDamage = weaponData.weaponInfo[weaponIndex].damage;
+        weaponDamage = weaponData.weaponInfo[weaponIndex].damage + plusDamage;
     }
 }
