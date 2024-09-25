@@ -12,13 +12,13 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     [Header("수치")]
-    [SerializeField] private float timer = 60;
+    [SerializeField] private float timer = 50;
 
     private bool isTimerRunning = false; // 타이머 상태를 관리하는 변수
 
     private void Start()
     {
-        timer = 60;
+        timer = 50;
     }
 
     private void Update()

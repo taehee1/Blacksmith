@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnforceManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class EnforceManager : MonoBehaviour
 
     public GameObject successResult;
     public GameObject failResult;
+
+    public Toggle safeguardToggle;
 
     private void Awake()
     {
@@ -57,8 +60,15 @@ public class EnforceManager : MonoBehaviour
 
     public void Fail()
     {
-        WeaponManager.Instance.weaponIndex--;
-        WeaponManager.Instance.ChangeWeapon();
+        if (safeguardToggle.isOn && GameManager.Instance.safeguardCount > 0)
+        {
+            GameManager.Instance.safeguardCount--;
+        }
+        else
+        {
+            WeaponManager.Instance.weaponIndex--;
+            WeaponManager.Instance.ChangeWeapon();
+        }
         StarCatchGauge.instance.isEnforcing = false;
     }
 }

@@ -18,7 +18,7 @@ public class UiManager : MonoBehaviour
 
     [Header("재화UI")]
     public TextMeshProUGUI coin;
-    
+    public TextMeshProUGUI SafeguardCount;
 
     [Header("메뉴UI")]
     public GameObject menuUI;
@@ -35,7 +35,7 @@ public class UiManager : MonoBehaviour
     private void Update()
     {
         WeaponUIUpdate();
-        CoinUIUpdate();
+        UIUpdate();
         MenuOpen();
     }
 
@@ -48,9 +48,11 @@ public class UiManager : MonoBehaviour
         damage.text = $"데미지 : {WeaponManager.Instance.weaponDamage}";
     }
 
-    private void CoinUIUpdate()
+    private void UIUpdate()
     {
         coin.text = GameManager.Instance.coin.ToString("N0");
+
+        SafeguardCount.text = $": {GameManager.Instance.safeguardCount}개";
     }
 
     private void MenuOpen()

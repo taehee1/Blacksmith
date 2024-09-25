@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
-    //public GameObject buyEffect;
+    public GameObject buyEffect;
 
     public ItemInfo[] itemInfo;
 
@@ -36,11 +36,18 @@ public class StoreManager : MonoBehaviour
 
             GameManager.Instance.safeguardCount++;
 
-            //buyEffect.SetActive(true);
+            buyEffect.SetActive(true);
+            buyEffect.GetComponentInParent<AudioSource>().Play();
+            Invoke("OffEffect", 0.2f);
         }
         else
         {
             Debug.Log("골드가 부족합니다.");
         }
+    }
+
+    private void OffEffect()
+    {
+        buyEffect?.SetActive(false);
     }
 }

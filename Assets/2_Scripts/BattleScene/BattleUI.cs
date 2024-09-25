@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BattleUI : MonoBehaviour
@@ -26,10 +28,16 @@ public class BattleUI : MonoBehaviour
     public TextMeshProUGUI currentDamageText;
     public TextMeshProUGUI earnCoinText;
 
+    [Header("설정UI")]
+    public GameObject settingUI;
+
+    private bool isSettingOpen;
+
     private void Update()
     {
         WeaponUIUpdate();
         CoinUIUpdate();
+        SettingOpen();
     }
 
     private void WeaponUIUpdate()
@@ -71,5 +79,28 @@ public class BattleUI : MonoBehaviour
         bestDamageText.text = $"최고 데미지: {GameManager.Instance.bestDamage}";
         currentDamageText.text = $"데미지: {dummy.totalDamage}";
         earnCoinText.text = $"+Coin: {dummy.totalDamage}";
+    }
+
+    private void SettingOpen()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SettingUI();
+        }
+    }
+
+    private void SettingUI()
+    {
+        if (isSettingOpen)
+        {
+            settingUI.SetActive(!isSettingOpen);
+            isSettingOpen = false;
+        }
+        else
+        {
+            settingUI.SetActive(!isSettingOpen);
+            isSettingOpen = true;
+            EventSystem.current.SetSelectedGameObject(null); // 버튼 비활성화
+        }
     }
 }

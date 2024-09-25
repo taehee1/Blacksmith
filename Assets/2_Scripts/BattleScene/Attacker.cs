@@ -5,11 +5,14 @@ using UnityEngine;
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private PlayerAttack playerAttack;
+    private CameraShake cameraShake;
     private int damage;
     private int hitCount;
 
     private void Start()
     {
+        cameraShake = GetComponent<CameraShake>();
+
         damage = playerAttack.damage;
         hitCount = playerAttack.hitCount;
     }
@@ -18,6 +21,8 @@ public class Attacker : MonoBehaviour
     {
         if (collision.tag == "Dummy")
         {
+            cameraShake.ShakeCamera();
+
             for (int i = 0; i < hitCount; i++)
             {
                 collision.GetComponent<Dummy>().TakeDamage(damage);

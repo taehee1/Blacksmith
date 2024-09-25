@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void HitScanOn()
     {
+        GetComponent<AudioSource>().Play();
         hitScan.SetActive(true);
         Invoke("HitScanOff", 0.05f);
     }
