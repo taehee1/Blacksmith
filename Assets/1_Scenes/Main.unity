@@ -1720,7 +1720,7 @@ MonoBehaviour:
   styleManager: {fileID: 1884425339}
   textObject: {fileID: 413189812}
   selectedFont: {fileID: 11400000, guid: 2172956bc7d7a204896ca94857051a39, type: 2}
-  textColor: {r: 1, g: 1, b: 1, a: 255}
+  textColor: {r: 1, g: 0.16509432, b: 0.16509432, a: 255}
   fontSize: 30
   isIdentical: 0
   updateSubTwins: 0
@@ -1754,8 +1754,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 255}
+    rgba: 4280953599
+  m_fontColor: {r: 1, g: 0.16509432, b: 0.16509432, a: 255}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9952,8 +9952,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 255}
+    rgba: 4294931747
+  m_fontColor: {r: 0.13679248, g: 0.45829648, b: 1, a: 255}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10075,7 +10075,7 @@ MonoBehaviour:
   styleManager: {fileID: 7699506480335864753}
   textObject: {fileID: 7699506479975245036}
   selectedFont: {fileID: 11400000, guid: 2172956bc7d7a204896ca94857051a39, type: 2}
-  textColor: {r: 1, g: 1, b: 1, a: 255}
+  textColor: {r: 0.13679248, g: 0.45829648, b: 1, a: 255}
   fontSize: 30
   isIdentical: 0
   updateSubTwins: 0
