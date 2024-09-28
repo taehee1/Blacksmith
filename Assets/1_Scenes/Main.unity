@@ -6581,7 +6581,7 @@ GameObject:
   - component: {fileID: 1615767190}
   - component: {fileID: 1615767191}
   m_Layer: 0
-  m_Name: BgmManager
+  m_Name: Bgm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11388,10 +11388,10 @@ SceneRoots:
   - {fileID: 1311551835}
   - {fileID: 1909257953}
   - {fileID: 507731249}
-  - {fileID: 114378901}
-  - {fileID: 193332896}
-  - {fileID: 1683254321}
   - {fileID: 1752573950}
+  - {fileID: 193332896}
+  - {fileID: 114378901}
+  - {fileID: 1683254321}
   - {fileID: 1615767190}
   - {fileID: 209186318}
   - {fileID: 1287701522}
