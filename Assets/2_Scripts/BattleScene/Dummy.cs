@@ -15,7 +15,6 @@ public class Dummy : MonoBehaviour
 
     private void Start()
     {
-        // 1초마다 DPS 업데이트 코루틴 시작
         StartCoroutine(UpdateDPS());
     }
 
