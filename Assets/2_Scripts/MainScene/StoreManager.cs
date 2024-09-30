@@ -45,7 +45,7 @@ public class StoreManager : MonoBehaviour
             // 아이템 구매 처리
             GameManager.Instance.coin -= item.price;  // 플레이어 골드 차감
 
-            // 아이템별로 추가 로직이 있는 경우 실행
+            // 아이템별로 추가 로직실행
             item.onBuyAction?.Invoke();
 
             // 구매 효과 적용

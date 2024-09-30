@@ -22,6 +22,7 @@ public class DamageTextManager : MonoBehaviour
 
         // 데미지 텍스트 생성
         GameObject damageTextInstance = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, damageTextParent);
+        // 데미지 수치만큼 텍스트 변경
         damageTextInstance.GetComponent<DamagePopup>().Setup(damage, this);
     }
 
